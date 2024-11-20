@@ -26,7 +26,13 @@ project :
      p_codes : []
  elements :
   identifier : 0x473db83f0045abae
-  elements : []
+  elements :
+   -
+     name : TableauIndexé
+     identifier : 0x473dbaf7005c4b3a
+     internal_properties : HgAAAB4AAADduTXp1oOrtAaGFZ7oR4W2yVY8PIbYqPSO3zd70kXJD/EzxYbr1XJMc9bAOPjokADISA==
+     physical_name : .\TableauIndexé.wdc
+     type : 4
   other_elements : []
   array_of_analysis : []
   net_assemblies : []
@@ -52,6 +58,18 @@ rad :
  internal_properties : HgAAAB4AAABhIL0UXeZmxDJxY3Xy0Q==
 project_explorer :
  explorer_type : project
+ children :
+  -
+    explorer_type : classes
+    children :
+     -
+       name : Helpers
+       explorer_type : custom_folder
+       children :
+        -
+          name : TableauIndexé
+          explorer_type : element
+          type : 4
 resources :
  string_res :
   identifier : 0x0
