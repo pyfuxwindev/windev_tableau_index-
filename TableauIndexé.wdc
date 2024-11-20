@@ -69,10 +69,11 @@ class :
      procedure_id : 1674702830704500647
      type_code : 12
      code : |1+
-      procédure Cherche(sClé est chaîne): tableau dynamique
+      procédure Cherche(sClé est chaîne)
       
-      tabEléments est un tableau dynamique
+      tabEléments est un tableau de variant
       POUR TOUT nIndex DE :m_taIndex=sClé
+      //	tabEléments.Ajoute(:m_tabTableauDeDonnées[nIndex])
       	AjouteRéférence(tabEléments, :m_tabTableauDeDonnées[nIndex])
       FIN
       RENVOYER tabEléments
