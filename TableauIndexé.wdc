@@ -16,7 +16,9 @@ class :
    -
      code : |1+
       TableauIndexé est une Classe
-      
+      PRIVÉE
+      	m_tabTableauDeDonnées	est un tableau dynamique								//Tableau d'objet à indexer
+      	m_taIndex				est un tableau associatif (AvecDoublon) d'entiers		//Index
       fin
      type : 131072
   procedures :
@@ -25,9 +27,9 @@ class :
      procedure_id : 1674700206479264554
      type_code : 27
      code : |1+
-      procédure Constructeur()
-      
-      
+      procédure Constructeur(tabTableauDeDonnées est un tableau dynamique)
+      TableauSupprimeTout(m_taIndex)
+      :m_tabTableauDeDonnées <- tabTableauDeDonnées
      type : 589824
    -
      name : Destructeur
@@ -35,8 +37,47 @@ class :
      type_code : 28
      code : |1+
       procédure Destructeur()
-      
+      :m_tabTableauDeDonnées <- Null
+      TableauSupprimeTout(:m_taIndex)
      type : 655360
+   -
+     name : Indexer
+     procedure_id : 1674702452747290505
+     type_code : 12
+     code : |1+
+      procédure Indexer(sListeChampsAIndexer est chaîne): tableau associatif d'entier
+      
+      TableauSupprimeTout(m_taIndex)
+      
+      tabNomChampsAIndexer est tableau de chaîne
+      ChaîneVersTableau(sListeChampsAIndexer,tabNomChampsAIndexer,[",",";",TAB])
+      nNbChamps	est entier	= TableauOccurrence(tabNomChampsAIndexer)
+      
+      POUR nIndex=1 _À_ TableauOccurrence(:m_tabTableauDeDonnées)
+      	sClé est chaîne
+      	POUR nIndexChamp = 1 _À_ nNbChamps
+      		sClé += ["|"] + {"m_tabTableauDeDonnées["+nIndex+"]."+tabNomChampsAIndexer[nIndexChamp], indVariable}
+      	FIN
+      	:m_taIndex.Insère(sClé, nIndex)
+      FIN
+      
+      RENVOYER :m_taIndex
+      
+     type : 458752
+   -
+     name : Cherche
+     procedure_id : 1674702830704500647
+     type_code : 12
+     code : |1+
+      procédure Cherche(sClé est chaîne): tableau dynamique
+      
+      tabEléments est un tableau dynamique
+      POUR TOUT nIndex DE :m_taIndex=sClé
+      	AjouteRéférence(tabEléments, :m_tabTableauDeDonnées[nIndex])
+      FIN
+      RENVOYER tabEléments
+      
+     type : 458752
   procedure_templates : []
   property_templates : []
  code_parameters :
